@@ -64,3 +64,11 @@ with tg.Connection() as c:
                 btn9.id: "9",
                 btn_dot.id: "."
             }
+            
+            if event.value["id"] in button_map:
+                value = button_map[event.value["id"]]
+                if value == "." and "." in current:
+                    continue
+                
+                current += value
+                update_display()
