@@ -26,7 +26,21 @@ with tg.Connection() as c:
     finger_count.settextsize(30)
 
     front_btn = tg.Button(activity, "Front Camera", layout)
-    rear_btn = tg.Button(activity, "Rear Camera"          , layout)
-    start_btn = tg.Button(activity, "Start Camera"          , layout)
-    stop_btn = tg.Button(activity, "Stop Camera"          , layout)
-    exit_btn = tg.Button(activity, "Exit"                    , layout)
+    rear_btn = tg.Button(activity, "Rear Camera", layout)
+    start_btn = tg.Button(activity, "Start Camera", layout)
+    stop_btn = tg.Button(activity, "Stop Camera", layout)
+    exit_btn = tg.Button(activity, "Exit", layout)
+
+    #Enable Click Event
+    front_btn.sendclickevent(True)
+    rear_btn.sendclickevent(True)
+    start_btn.sendclickevent(True)
+    stop_btn.sendclickevent(True)
+    exit_btn.sendclickevent(True)
+
+    while True:
+        for ev in c.events():
+            if ev.type == tg.Event.click:
+                if ev.value["id"] == front_btn.id:
+                    camera = "Front"
+                    camera_label.settext("Camera: Front")
