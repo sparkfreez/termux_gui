@@ -1,4 +1,5 @@
 import sys
+
 import termuxgui as tg
 
 camera = "None"
@@ -44,3 +45,15 @@ with tg.Connection() as c:
                 if ev.value["id"] == front_btn.id:
                     camera = "Front"
                     camera_label.settext("Camera: Front")
+
+                elif ev.value["id"] == rear_btn.id:
+                    camera = "rear"
+                    camera_label.settext("Camera: Rear")
+
+                elif ev.value["id"] == start_btn.id:
+
+                    if camera == "none":
+                        status.settext("Select a camera firsr")
+                    else:
+                        running == True
+                        status.settext(f"Running {camera} Camera")
