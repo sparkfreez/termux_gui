@@ -53,7 +53,13 @@ with tg.Connection() as c:
                 elif ev.value["id"] == start_btn.id:
 
                     if camera == "none":
-                        status.settext("Select a camera firsr")
+                        status.settext("Select a camera first")
                     else:
                         running == True
+
                         status.settext(f"Running {camera} Camera")
+
+                        preview.settext(
+                                "\n\nCamera Starting...\n"
+                                "Live Preview will be added in part 3."
+                        )
